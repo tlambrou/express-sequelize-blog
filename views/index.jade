@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  a(href="/users/1/posts/new") New Post
+
+  for post in posts
+    h1
+        a(href="/users/1/posts/#{post.id}") post
