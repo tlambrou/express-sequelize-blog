@@ -11,7 +11,7 @@ module.exports = {
       body: {
         type: Sequelize.TEXT
       },
-      postId: {
+      PostId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
