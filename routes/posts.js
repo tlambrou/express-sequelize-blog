@@ -10,14 +10,13 @@ router.get('/new', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
     models.Post.findById(req.params.id, {incude: ['Comment']}).then(post => {
         post.getComments().then(comments => {
-            console.log(comments)
             res.render('posts-show', {post: post, comments: comments})
         });
     });
 });
 
 router.post('/', (req,res) => {
-	req.body.id = req.params.id;
+	req.body.UserId = req.params.id;
 
 	models.Post.create(req.body).then(post => {
 		res.redirect('/')

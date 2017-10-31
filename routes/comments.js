@@ -4,7 +4,7 @@ var router = express.Router({mergeParams: true});
 var models  = require('../db/models');
 
 router.post('/', (req,res) => {
-    req.body.id = req.params.id;
+    req.body.PostId = req.params.id;
     
     models.Comment.create(req.body).then((comment) => {
         res.redirect('/users/1/posts/' + req.params.id)
