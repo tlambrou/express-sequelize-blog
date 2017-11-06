@@ -12,6 +12,9 @@ var comments = require('./routes/comments');
 
 var app = express();
 
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('sample_blog_dev', 'adambraus', null, { dialect: 'postgres' });
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -23,10 +26,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('sample_blog_dev', 'adambraus', null, { dialect: 'postgres' });
 
 sequelize
   .authenticate()

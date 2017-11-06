@@ -8,8 +8,8 @@ router.get('/new', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-    models.Post.findById(req.params.id, {incude: ['Comment']}).then(post => {
-        post.getComments().then(comments => {
+    models.Post.findById(req.params.id, {include: ['Comment']}).then((post) => {
+        post.getComments().then((comments) => {
             res.render('posts-show', {post: post, comments: comments})
         });
     });
@@ -18,7 +18,7 @@ router.get('/:id', function(req, res, next) {
 router.post('/', (req,res) => {
 	req.body.UserId = req.params.id;
 
-	models.Post.create(req.body).then(post => {
+	models.Post.create(req.body).then((post) => {
 		res.redirect('/')
 	});
 });
